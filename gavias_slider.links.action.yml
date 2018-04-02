@@ -1,0 +1,7 @@
+gavias_slider_add_action:
+   route_name: gavias_slider.admin.add
+   title: 'Add Slider'
+   route_parameters:
+        sid: '0'
+   appears_on:
+      - gavias_slider.admin

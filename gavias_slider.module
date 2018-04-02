@@ -1,0 +1,160 @@
+<?php
+
+use Drupal\Core\Menu\MenuTreeParameters;
+use Drupal\Core\Template\Attribute;
+use Drupal\Core\Form\FormStateInterface;
+
+define( 'gavias_slider_VERSION', '1.0' );
+define( 'GAVIAS_SLIDER_PATH', drupal_get_path('module', 'gavias_slider') );
+  module_load_include('php','gavias_slider', '/includes/functions');
+  module_load_include('php','gavias_slider', '/includes/model');
+
+function gavias_slider_theme($existing, $type, $theme, $path) {
+  $items['admin-form'] = array(
+    'variables' => array(
+      'content' => '',
+    ),
+    'path' => $path . '/templates/backend',
+  );
+
+  $items['admin-global'] = array(
+     'variables' => array(
+      'content' => '',
+    ),
+     'path' => $path . '/templates/backend',
+  );
+
+  $items['block-slider'] = array(
+     'variables' => array(
+      'content' => '',
+    ),
+     'path' => $path . '/templates/frontend',
+  );
+  return $items;
+}  
+function gavias_slider_preprocess_page(&$variables) {
+     $variables['#attached']['library'][] = 'gavias_slider/gavias_slider.assets.frontend';
+
+}
+function gavias_slider_slides($sid) {
+    $slidershow = gavias_slider_load($sid);
+    $settings = $slidershow->settings;
+
+    $vars['attributes']['style'] = 'min-height: 350px';
+    $vars['attributes']['class'] = 'gavias-slider swiper-container first-el-true';
+    $vars['attributes']['data-height'] = (isset($settings->startheight) && $settings->startheight) ? $settings->startheight : '700';
+    $vars['attributes']['data-fullheight'] = (isset($settings->fullheight) && $settings->fullheight) ? $settings->fullheight : 'false';
+    $vars['attributes']['data-fade'] = (isset($settings->slider_effect) && $settings->slider_effect) ? $settings->slider_effect : 'false';
+    $vars['attributes']['data-speed'] = (isset($settings->speed) && $settings->speed) ? $settings->speed : '7000';
+    $vars['attributes']['data-dots'] = (isset($settings->display_dot) && $settings->display_dot) ? $settings->display_dot : 'true';
+    $vars['attributes']['data-arrows'] = (isset($settings->display_arrows) && $settings->display_arrows) ? $settings->display_arrows : 'true';
+    $vars['attributes']['data-autoplay'] = (isset($settings->autoplay) && $settings->autoplay) ? $settings->autoplay : 'true';
+    $vars['attributes']['data-autoplayspeed'] = (isset($settings->autoplay_speed) && $settings->autoplay_speed) ? $settings->autoplay_speed : '7000';
+    $vars['attributes']['data-pause'] = (isset($settings->pause) && $settings->pause) ? $settings->pause : 'false';
+    $height = (isset($settings->startheight) && $settings->startheight) ? $settings->startheight : '700';
+    $preload = drupal_get_path('module', 'gavias_slider') .'/assets/images/preloader-12.gif';
+    $attributes = '';
+    foreach ($vars['attributes'] as $key => $value) {
+      $attributes .= ' ' . $key . '="' . $value . '"';
+    }
+   
+    $content = '';
+    if(isset($slidershow->slides) && $slidershow->slides){
+        foreach ($slidershow->slides as $slide) {
+            $slide->height = (isset($settings->startheight) && $settings->startheight) ? $settings->startheight : '700';
+            $content .= gavias_slider_preprocess_slide($slide);
+        }
+    }
+    ob_start();
+    include GAVIAS_SLIDER_PATH . '/templates/frontend/slides.php';
+    $output = ob_get_clean();
+    
+    return $output;
+}
+
+function gavias_slider_preprocess_slide($slide) {
+  global $base_url;
+    $vars['attributes']['class'] = 'swiper-slide center_center swiper-slide-duplicate';
+    
+    $vars['attributes']['data-time'] = '6000';
+
+    $caption_attr['class'] = 'gva-caption';
+    
+    //Caption title
+    if(isset($slide->caption_title_fs) && $slide->caption_title_fs){
+        $caption_attr['caption_title_fs'] = $slide->caption_title_fs . 'px';
+    }else{
+        $caption_attr['caption_title_fs'] = '30px';
+    }  
+
+    if(isset($slide->caption_title_ls) && $slide->caption_title_ls){
+        $caption_attr['caption_title_ls'] = $slide->caption_title_ls . 'px';
+    }else{
+        $caption_attr['caption_title_ls'] = '0px';
+    }  
+
+    if(isset($slide->caption_title_fw) && $slide->caption_title_fw){
+        $caption_attr['caption_title_fw'] = $slide->caption_title_fw;
+    }else{
+        $caption_attr['caption_title_fw'] = '700';
+    }  
+
+    if(isset($slide->caption_skin) && $slide->caption_skin){
+        $caption_attr['caption_skin'] = $slide->caption_skin;
+    }else{
+        $caption_attr['caption_skin'] = 'white';
+    } 
+
+    if(isset($slide->caption_skin_custom) && $slide->caption_skin_custom){
+        $caption_attr['caption_skin_custom'] = $slide->caption_skin_custom;
+    }else{
+        $caption_attr['caption_skin_custom'] = '#FFF';
+    }
+
+    if(isset($slide->caption_background) && $slide->caption_background){
+        $caption_attr['caption_background'] = $slide->caption_background;
+    }else{
+        $caption_attr['caption_background'] = '';
+    }
+
+    $caption_attrs = $caption_attr;
+
+    $style[] = '';
+
+    if($slide->background_image_uri){
+        $path = substr(base_path(), 0, -1)  . $slide->background_image_uri;
+        $style[] = "background-image: url('{$path}');";
+    }
+
+    $style[] = "height: {$slide->height}px;";
+    if(isset($slide->background_color) && $slide->background_color){
+        $style[] = "background-color: {$slide->background_color};"; 
+    }else{
+        $style[] = "background-color: #ccc;"; 
+    }
+
+    if(isset($slide->background_position) && $slide->background_position){
+        $style[] = "background-position: {$slide->background_position};"; 
+     }
+
+     if(isset($slide->background_position) && $slide->background_position){
+        $style[] = "background-repeat: {$slide->background_repeat};"; 
+     }
+
+    if($slide->background_image){
+        $image_background_style = implode('', $style);
+    }
+
+    $data_bg_video = $video_class = '';
+    if(isset($slide->link_video) && $slide->link_video){
+        $video_class = 'youtube-bg';
+        $data_bg_video ="data-property=\"{videoURL: '{$slide->link_video}',
+          containment: 'self', startAt: 0,  stopAt: 0, autoPlay: true, loop: true, mute: true, showControls: false, 
+          showYTLogo: false, realfullscreen: true, addRaster: false, optimizeDisplay: true, stopMovieOnBlur: true}\"";
+    }
+
+    ob_start();
+    include GAVIAS_SLIDER_PATH . '/templates/frontend/slide.php';
+    $content = ob_get_clean();
+    return $content;
+}

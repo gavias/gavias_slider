@@ -1,0 +1,34 @@
+gavias_slider.assets.admin:
+  version: 1.x
+  css:
+    theme:
+      assets/admin.css: {}
+  js:
+    vendor/jquery-migrate.min.js: {}
+    assets/admin.js: { scope: footer }
+    assets/js/upload/jquery.ui.widget.js: { scope: footer }
+    assets/js/upload/jquery.iframe-transport.js: { scope: footer }
+    assets/js/upload/jquery.fileupload.js: { scope: footer  }
+    assets/js/upload/script.js: { scope: footer }
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once
+    - core/jquery.ui.sortable
+    - core/jquery.ui.draggable
+    - core/jquery.ui.dropable
+    - core/jquery.ui.dialog
+
+gavias_slider.assets.frontend:
+  version: 1.x
+  css: 
+    theme:
+      vendor/slick/slick.css: {}
+      vendor/slick/slick-theme.css: {}
+      vendor/ytplayer/css/jquery.mb.YTPlayer.min.css: {}
+  js:
+    vendor/jquery-migrate.min.js: {}
+    vendor/slick/slick.js: {}
+    vendor/ytplayer/js/jquery.mb.YTPlayer.min.js: {}
+    vendor/main.js: {}

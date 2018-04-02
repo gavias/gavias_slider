@@ -1,0 +1,64 @@
+gavias_slider.admin:
+  path: '/admin/structure/gavias_slider'
+  defaults:
+    _title: 'Gavias Slider'
+    _controller: '\Drupal\gavias_slider\Controller\AdminController::gavias_slider_list'
+  requirements:
+    _permission: 'administer gaviasslider'
+
+gavias_slider.admin.add:
+  path: '/admin/structure/gavias_slider/form/{sid}'
+  defaults:
+    _title: 'Add Slider'
+    _form: '\Drupal\gavias_slider\Form\AddForm'
+  requirements: 
+    _permission: 'administer gaviasslider'
+
+gavias_slider.admin.import:
+  path: '/admin/structure/gavias_slider/import/{sid}'
+  defaults:
+    _title: 'Import Slider'
+    _form: '\Drupal\gavias_slider\Form\ImportForm'
+  requirements:
+    _permission: 'administer gaviasslider'
+
+gavias_slider.admin.config:
+  path: '/admin/structure/gavias_slider/config/{sid}'
+  defaults:
+    _title: 'Config Slider'
+    _controller: '\Drupal\gavias_slider\Controller\AdminController::gavias_slider_config'
+  requirements:
+    _permission: 'administer gaviasslider'
+
+
+gavias_slider.admin.edit:
+  path: '/admin/structure/gavias_slider/edit/{sid}'
+  defaults:
+    _title: 'Edit Slider'
+    _controller: '\Drupal\gavias_slider\Controller\AdminController::gavias_slider_edit'
+  requirements:
+    _permission: 'administer gaviasslider'
+
+gavias_slider.admin.save:
+  path: '/admin/structure/gavias_slider/save'
+  defaults:
+    _title: 'Save configuration of Gavias Slider'
+    _controller: '\Drupal\gavias_slider\Controller\AdminController::gavias_slider_save'
+  requirements:
+    _permission: 'administer gaviasslider'
+
+gavias_slider.admin.delete:
+  path: '/admin/structure/gavias_slider/delete/{sid}'
+  defaults:
+    _title: 'Delete Gavias Block Builder'
+    _form: '\Drupal\gavias_slider\Form\DelForm'
+  requirements:
+    _permission: 'administer gaviasblockbuilder'
+
+gavias_slider.admin.upload:
+  path: '/admin/structure/gavias_slider/upload'
+  defaults:
+    _title: 'Upload image of Gavias Slider'
+    _controller: '\Drupal\gavias_slider\Controller\AdminController::gavias_upload_file'
+  requirements:
+    _permission: 'administer gaviasslider'

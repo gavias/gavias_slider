@@ -1,0 +1,233 @@
+.no-border{
+    border: none!important;
+}
+.space-20{
+    margin-bottom: 20px!important;
+}
+.gavias_heading .fieldset-legend{
+    display: block;
+    left: 14px;
+    margin: 0;
+    padding: 0;
+    right: 13px;
+    top: -20px;
+}
+.gavias_heading .fieldset-legend h3{
+    background: #f5f5f5;
+    padding: 11px;
+}
+.form-text, .form-select, .form-textarea{ 
+    color: #888 !important; 
+    border: 1px solid #e1e3e8 !important; 
+}
+.main-list-silde{
+    position: relative;
+}
+.slide-reviews{
+    background-size: cover!important;
+    -webkit-background-size: cover!important;
+    -moz-background-size: cover!important;
+    -o-background-size: cover!important;
+}
+
+ul#gavias_list_slide{
+    margin: 0;
+    padding: 0;
+    min-height: 60px;
+}
+ul#gavias_list_slide li {
+    background: white;
+    border: 1px solid #ccc;
+    float: left;
+    list-style: none;
+    margin: 10px;
+    margin-right: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    min-width: 100px;
+}
+
+ul#gavias_list_slide li .remove-slide{
+    display: inline-block;
+    width: 10px;
+    height: auto;
+    padding: 0;
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    z-index: 99;
+}
+
+ul#gavias_list_slide li .remove-slide:hover{
+    color: #000;
+}
+
+ul#gavias_list_slide li span:hover{
+    cursor: pointer;
+}
+ul#gavias_list_slide li.active {
+    border-top: 3px solid red;
+}
+
+#gavias_list_slide li > span{
+    line-height: 36px;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    padding: 0 26px 0px 20px;
+}
+
+#gavias_slider_setting ul.ui-tabs-nav {
+    border-bottom: medium none;
+}
+ul.ui-tabs-nav {
+    background-color: #373737;
+    border-bottom: 2px solid #dd6161;
+
+}
+#gavias_slider_setting ul.level1 a{
+    text-transform: uppercase;
+}
+ul.ui-tabs-nav li{
+    float: left;
+}
+#gavias_slider_setting li.settings a{
+    background: url("../images/settings.png") no-repeat scroll 0 center rgba(0, 0, 0, 0);
+    padding-left: 25px;
+}
+.ui-tabs-hide{
+    display: none;
+}
+
+.ui-widget-content{
+    border: none;
+}
+.form-global-setting-item{
+    padding: 15px; overflow: hidden;
+}
+.form-global-setting-item .item{
+    float: left; margin-right: 20px;
+}
+.form-global-setting-item .description{
+    float: left; width: 100%;
+}
+#gavias_slider_setting{
+    max-width: 1170px;
+    margin: 0 auto;
+}
+#gavias_slider_setting input {width: 100%; padding: 5px 0;}
+#gavias_slider_setting select{width: 100%; padding: 5px 0;}
+#gavias_slider_setting textarea{width: 100%; padding: 5px 0;}
+
+#gavias_slider_setting input[type="text"],
+#gavias_slider_setting input[type="tel"],
+#gavias_slider_setting input[type="password"],
+#gavias_slider_setting input[type="email"],
+#gavias_slider_setting input[type="number"],
+#gavias_slider_setting input[type="file"],
+#gavias_slider_setting .input-file-upload,
+#gavias_slider_setting textarea, #gavias_slider_setting select {
+  background-color: #fff !important;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.02) inset;
+  border: 1px solid #ccc !important;
+  padding: 5px 1% !important;
+  width: 98% !important;
+}
+
+#gavias_slider_setting .input-file-upload {
+  margin: 5px 0;
+}
+
+#gavias_slider_setting .form-submit{
+    display: inline-block;
+    max-width: 120px;
+}
+
+#gavias_slider_setting .gva-upload-image .loading {
+  margin-top: 5px;
+  padding: 5px 10px;
+  background: #3A799D;
+  color: #fff;
+  text-transform: uppercase;
+  display: none;
+}
+
+input.file-imce {
+  background-image: url("../images/images-icon.png") !important;
+  background-position: 98% center !important;
+  background-repeat: no-repeat !important;
+  padding-right: 10% !important;
+  width: 90%!important;
+}
+#globalsettings input, #globalsettings select {width: auto;}
+
+a#addslide{
+    background: #4697ce url("../images/addnewwhite.png") no-repeat scroll 100px center ;
+    color: #FFF;
+    line-height: 30px;
+    display: inline-block;
+}
+
+.move{
+    cursor: move !important;
+}
+.ui-tabs .ui-tabs-panel{
+    padding: 0;
+}
+.remove-slide,.remove-layer{
+    color:#DD0000;
+    margin-left: 10px;
+}
+#gavias_slide_main table{
+    border: 1px solid #ccc;
+}
+#gavias_slide_main table tr{
+   background: #f5f5f5;
+}
+#gavias_slide_main table td, table th{
+    border: none;
+}
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a{
+    background: none;
+}
+#gavias_slider_setting  tr:hover, #gavias_slider_setting tr:focus{
+    background: none!important;
+}
+#gavias_slider_setting table td{
+    border: 1px solid #ccc;
+    padding: 20px!important;
+}
+#gavias_slider_setting .form-wrapper {
+    padding: 30px 0 0;
+    max-width: 1200px;
+    margin: 20px auto;
+    background: #fff;
+}
+#gavias_slider_setting .gavias_heading h3{
+    padding: 0;
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    color: #000;
+    background: #fff;
+}
+a#addslide{
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    padding: 0 40px 0 20px;
+    text-transform: uppercase;
+    line-height: 38px;
+}
+.form-submit{
+    line-height: 38px;
+    padding: 0 25px !important;
+    border: none !important;
+    background: #d8dce2 !important;
+    text-transform: uppercase;
+    margin: 25px 15px 0 0;
+}
+.form-submit:hover{
+    color: #FFF;
+    background: #4697ce !important;   
+}

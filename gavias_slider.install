@@ -1,0 +1,31 @@
+<?php
+
+function gavias_slider_schema() {
+  if(!db_table_exists('gavias_slider')){
+    $schema['gavias_slider'] = array(
+      'fields' => array(
+        'id' => array(
+          'type' => 'serial',
+          'not null' => TRUE,
+        ),
+        'name' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
+        'settings' => array(
+          'type' => 'text',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
+        'data' => array(
+          'type' => 'text',
+          'size' => 'big',
+          'not null' => FALSE,
+        ),
+      ),
+      'primary key' => array('id')
+    );
+    return $schema;
+  }
+}
